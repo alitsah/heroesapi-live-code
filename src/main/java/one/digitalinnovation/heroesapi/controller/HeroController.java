@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/hero")
@@ -24,5 +25,10 @@ public class HeroController {
     @ResponseStatus(HttpStatus.CREATED)
     public MessageResponseDTO createHero(@RequestBody  @Valid HeroDTO heroDTO){
         return heroService.createHero(heroDTO);
+    }
+
+    @GetMapping
+    public List<HeroDTO> listAll(){
+        return heroService.listAll();
     }
 }

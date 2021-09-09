@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class HeroService {
 
@@ -29,5 +32,12 @@ public class HeroService {
                 .builder()
                 .message("Created associated hero record " + saveHero.getId())
                 .build();
+    }
+
+    public List<HeroDTO> listAll() {
+        List<Hero> allHeroes =  heroRepository.findAll();
+        return allHeroes.stream()
+                .map(heroMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }

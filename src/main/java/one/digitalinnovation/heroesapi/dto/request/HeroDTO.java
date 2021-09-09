@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import one.digitalinnovation.heroesapi.entity.Communicator;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -29,5 +28,6 @@ public class HeroDTO {
     private String birthDate;
 
     @Valid
-    private List<Communicator> communicator;
+    @NotEmpty
+    private List<CommunicatorDTO> communicators;
 }
