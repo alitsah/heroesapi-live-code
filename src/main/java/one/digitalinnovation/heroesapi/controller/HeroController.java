@@ -1,11 +1,13 @@
 package one.digitalinnovation.heroesapi.controller;
 
-import one.digitalinnovation.heroesapi.dto.MessageResponseDTO;
-import one.digitalinnovation.heroesapi.entity.Hero;
+import one.digitalinnovation.heroesapi.dto.request.HeroDTO;
+import one.digitalinnovation.heroesapi.dto.response.MessageResponseDTO;
 import one.digitalinnovation.heroesapi.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/hero")
@@ -20,7 +22,7 @@ public class HeroController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDTO createHero(@RequestBody Hero hero){
-        return heroService.createHero(hero);
+    public MessageResponseDTO createHero(@RequestBody  @Valid HeroDTO heroDTO){
+        return heroService.createHero(heroDTO);
     }
 }

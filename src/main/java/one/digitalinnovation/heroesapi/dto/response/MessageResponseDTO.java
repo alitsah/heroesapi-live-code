@@ -1,4 +1,4 @@
-package one.digitalinnovation.heroesapi.dto;
+package one.digitalinnovation.heroesapi.dto.response;
 
 import lombok.Builder;
 import lombok.Data;
