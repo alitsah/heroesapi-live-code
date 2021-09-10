@@ -1,5 +1,6 @@
 package one.digitalinnovation.heroesapi.controller;
 
+import lombok.AllArgsConstructor;
 import one.digitalinnovation.heroesapi.dto.request.HeroDTO;
 import one.digitalinnovation.heroesapi.dto.response.MessageResponseDTO;
 import one.digitalinnovation.heroesapi.exception.HeroNotFoundException;
@@ -13,18 +14,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/hero")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class HeroController {
 
     private HeroService heroService;
 
-    @Autowired
-    public HeroController(HeroService heroService) {
-        this.heroService = heroService;
-    }
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDTO createHero(@RequestBody  @Valid HeroDTO heroDTO){
+    public MessageResponseDTO createHero(@RequestBody @Valid HeroDTO heroDTO){
         return heroService.createHero(heroDTO);
     }
 

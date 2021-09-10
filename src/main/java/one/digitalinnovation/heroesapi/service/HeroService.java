@@ -1,5 +1,6 @@
 package one.digitalinnovation.heroesapi.service;
 
+import lombok.AllArgsConstructor;
 import one.digitalinnovation.heroesapi.dto.request.HeroDTO;
 import one.digitalinnovation.heroesapi.dto.response.MessageResponseDTO;
 import one.digitalinnovation.heroesapi.entity.Hero;
@@ -14,16 +15,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class HeroService {
 
     private HeroRepository heroRepository;
 
     private final HeroMapper heroMapper = HeroMapper.INSTANCE;
-
-    @Autowired
-    public HeroService(HeroRepository heroRepository) {
-        this.heroRepository = heroRepository;
-    }
 
     public MessageResponseDTO createHero(@RequestBody HeroDTO heroDTO){
         Hero herotoSave = heroMapper.toModel(heroDTO);
