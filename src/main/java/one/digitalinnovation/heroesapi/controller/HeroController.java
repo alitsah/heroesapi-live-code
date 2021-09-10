@@ -2,7 +2,7 @@ package one.digitalinnovation.heroesapi.controller;
 
 import one.digitalinnovation.heroesapi.dto.request.HeroDTO;
 import one.digitalinnovation.heroesapi.dto.response.MessageResponseDTO;
-import one.digitalinnovation.heroesapi.exception.heroNotFoundException;
+import one.digitalinnovation.heroesapi.exception.HeroNotFoundException;
 import one.digitalinnovation.heroesapi.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,13 +34,18 @@ public class HeroController {
     }
 
     @GetMapping("/{id}")
-    public HeroDTO findById(@PathVariable Long id) throws heroNotFoundException {
+    public HeroDTO findById(@PathVariable Long id) throws HeroNotFoundException {
         return heroService.findById(id);
+    }
+
+    @PutMapping("/{id}")
+    public  MessageResponseDTO updateById(@PathVariable Long id, @RequestBody @Valid HeroDTO heroDTO) throws HeroNotFoundException {
+        return heroService.updateById(id, heroDTO);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void  deleteById(@PathVariable Long id) throws heroNotFoundException {
+    public void  deleteById(@PathVariable Long id) throws HeroNotFoundException {
         heroService.delete(id);
     }
 }
