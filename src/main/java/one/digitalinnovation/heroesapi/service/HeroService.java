@@ -3,6 +3,7 @@ package one.digitalinnovation.heroesapi.service;
 import one.digitalinnovation.heroesapi.dto.request.HeroDTO;
 import one.digitalinnovation.heroesapi.dto.response.MessageResponseDTO;
 import one.digitalinnovation.heroesapi.entity.Hero;
+import one.digitalinnovation.heroesapi.exception.heroNotFoundException;
 import one.digitalinnovation.heroesapi.mapper.HeroMapper;
 import one.digitalinnovation.heroesapi.repository.HeroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,12 @@ public class HeroService {
         return allHeroes.stream()
                 .map(heroMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    public HeroDTO findById(Long id) throws heroNotFoundException {
+        Hero hero = heroRepository.findById(id)
+                .orElseThrow(()-> new heroNotFoundException(id));
+
+        return heroMapper.toDTO(hero);
     }
 }

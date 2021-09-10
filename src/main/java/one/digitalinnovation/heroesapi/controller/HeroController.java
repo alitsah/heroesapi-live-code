@@ -2,6 +2,7 @@ package one.digitalinnovation.heroesapi.controller;
 
 import one.digitalinnovation.heroesapi.dto.request.HeroDTO;
 import one.digitalinnovation.heroesapi.dto.response.MessageResponseDTO;
+import one.digitalinnovation.heroesapi.exception.heroNotFoundException;
 import one.digitalinnovation.heroesapi.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,5 +31,10 @@ public class HeroController {
     @GetMapping
     public List<HeroDTO> listAll(){
         return heroService.listAll();
+    }
+
+    @GetMapping("/{id}")
+    public HeroDTO findById(@PathVariable Long id) throws heroNotFoundException {
+        return heroService.findById(id);
     }
 }
