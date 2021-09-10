@@ -43,9 +43,18 @@ public class HeroService {
     }
 
     public HeroDTO findById(Long id) throws heroNotFoundException {
-        Hero hero = heroRepository.findById(id)
-                .orElseThrow(()-> new heroNotFoundException(id));
+        Hero hero = verifyIfExistsRegister(id);
 
         return heroMapper.toDTO(hero);
+    }
+
+    public void delete(Long id) throws heroNotFoundException {
+        verifyIfExistsRegister(id);
+        heroRepository.deleteById(id);
+    }
+
+    private Hero verifyIfExistsRegister(Long id) throws heroNotFoundException {
+       return  heroRepository.findById(id)
+                .orElseThrow(()-> new heroNotFoundException(id));
     }
 }

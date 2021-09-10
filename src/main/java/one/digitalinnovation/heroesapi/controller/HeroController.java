@@ -37,4 +37,10 @@ public class HeroController {
     public HeroDTO findById(@PathVariable Long id) throws heroNotFoundException {
         return heroService.findById(id);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void  deleteById(@PathVariable Long id) throws heroNotFoundException {
+        heroService.delete(id);
+    }
 }
