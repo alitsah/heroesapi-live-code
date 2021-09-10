@@ -1,0 +1,14 @@
+<h2>sistema de gerenciamento de heróis em API REST com Spring Boot.</h2>
+
+API Que realiza POST,GET,PUT e DELETE de registros para heróis da Associação de Heróis. 
+
+Ao realizar o Download do projeto, basta abrir o terminal no local dos aquivos de informar o comando:
+mvn spring-boot:run
+
+Depois que o projeto for startado, abrir no endereço abaixo:
+http://localhost:8080/api/hero
+
+Pré-requisitos:
+Java 11 ou versões superiores.
+Maven 3.6.3 ou versões superiores.
+
