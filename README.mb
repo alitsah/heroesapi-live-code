@@ -1,4 +1,4 @@
-<h2>sistema de gerenciamento de heróis em API REST com Spring Boot.</h2>
+sistema de gerenciamento de heróis em API REST com Spring Boot.
 
 API Que realiza POST,GET,PUT e DELETE de registros para heróis da Associação de Heróis. 
 
